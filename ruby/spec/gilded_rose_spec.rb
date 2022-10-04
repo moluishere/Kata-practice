@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 # NOTE uncomment one of the lines to run tests for proper GildedRose class
-#require File.join(File.dirname(__FILE__) + '/..', 'gilded_rose')
+require File.join(File.dirname(__FILE__) + '/..', 'gilded_rose')
 #require File.join(File.dirname(__FILE__) + '/..', 'gilded_rose_refactored_1')
-require File.join(File.dirname(__FILE__) + '/..', 'gilded_rose_refactored_2')
+# require File.join(File.dirname(__FILE__) + '/..', 'gilded_rose_refactored_2')
 
 describe GildedRose do
 
@@ -338,44 +338,44 @@ describe GildedRose do
     # use :skip tag to skip those tests
     # use :xskip or remove tag to run those tests
     #
-    context 'when item is Conjured Mana Cake', :xskip do
-      it_behaves_like 'default item sell in', 'Conjured Mana Cake'
-
-      context 'item quality' do
-        it_behaves_like 'quality value', item_name='Conjured Mana Cake'
-
-        it 'lowers quality value by 2 at the end of the day' do
-          item = Item.new('Conjured Mana Cake', sell_in=1, quality=2)
-          items = [item]
-          gilded_rose = described_class.new(items)
-          gilded_rose.update_quality
-
-          expect(item.quality).to eq 0
-        end
-
-        it 'lowers quality value twice as fast after N days' do
-          quality = 15
-          item = Item.new('Conjured Mana Cake', sell_in=1, quality=quality)
-          items = [item]
-          gilded_rose = described_class.new(items)
-
-          gilded_rose.update_quality
-          expect(item.quality).to eq (13)
-
-          gilded_rose.update_quality
-          expect(item.quality).to eq (9)
-
-          gilded_rose.update_quality
-          expect(item.quality).to eq (5)
-
-          gilded_rose.update_quality
-          expect(item.quality).to eq (1)
-
-          gilded_rose.update_quality
-          expect(item.quality).to eq (0)
-        end
-      end
-    end
+    # context 'when item is Conjured Mana Cake', :skip do
+    #   it_behaves_like 'default item sell in', 'Conjured Mana Cake'
+    #
+    #   context 'item quality' do
+    #     it_behaves_like 'quality value', item_name='Conjured Mana Cake'
+    #
+    #     it 'lowers quality value by 2 at the end of the day' do
+    #       item = Item.new('Conjured Mana Cake', sell_in=1, quality=2)
+    #       items = [item]
+    #       gilded_rose = described_class.new(items)
+    #       gilded_rose.update_quality
+    #
+    #       expect(item.quality).to eq 0
+    #     end
+    #
+    #     it 'lowers quality value twice as fast after N days' do
+    #       quality = 15
+    #       item = Item.new('Conjured Mana Cake', sell_in=1, quality=quality)
+    #       items = [item]
+    #       gilded_rose = described_class.new(items)
+    #
+    #       gilded_rose.update_quality
+    #       expect(item.quality).to eq (13)
+    #
+    #       gilded_rose.update_quality
+    #       expect(item.quality).to eq (9)
+    #
+    #       gilded_rose.update_quality
+    #       expect(item.quality).to eq (5)
+    #
+    #       gilded_rose.update_quality
+    #       expect(item.quality).to eq (1)
+    #
+    #       gilded_rose.update_quality
+    #       expect(item.quality).to eq (0)
+    #     end
+    #   end
+    # end
 
   end
 
